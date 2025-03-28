@@ -4,12 +4,15 @@ from src.domain.entities.address import Address
 from src.domain.repositories.address import AddressRepository
 from src.domain.repositories.dto.address import GetAddressesDTO
 from src.infrastructure.database.models.address import AddressModel
-from src.infrastructure.database.session_maker import session_maker
+from src.infrastructure.database.session_maker import SessionMaker
 
 
 class SQLAlchemyAddressRepository(AddressRepository):
+    def __init__(self, session_maker: SessionMaker):
+        self.session_maker = session_maker
+
     async def create(self, create_address: Address) -> Address:
-        async with session_maker.get_session() as session:
+        async with self.session_maker.get_session() as session:
             address_dump = create_address.model_dump()
             address = AddressModel(**address_dump)
             session.add(address)
@@ -25,7 +28,7 @@ class SQLAlchemyAddressRepository(AddressRepository):
             )
 
     async def get(self, get_addresses: GetAddressesDTO) -> list[Address]:
-        async with session_maker.get_session() as session:
+        async with self.session_maker.get_session() as session:
             offset, limit = get_addresses.offset, get_addresses.limit
             stmt = select(AddressModel).order_by(AddressModel.timestamp.desc()).offset(offset).limit(limit)
             result = await session.execute(stmt)
