@@ -1,4 +1,3 @@
-import traceback
 from tronpy import AsyncTron
 from tronpy.keys import to_hex_address
 from tronpy.providers import AsyncHTTPProvider
@@ -15,9 +14,10 @@ async def get_address_information(create_address: CreateAddressDTO) -> Address:
             address = create_address.address
             hex_address = to_hex_address(address)
             balance = await client.get_account_balance(hex_address)
+            bandwidth = await client.get_bandwidth(hex_address)
             resources = await client.get_account_resource(hex_address)
-            bandwidth = resources.get('free_net_usage', 0)
             energy = resources.get('EnergyUsage', 0)
+
         except Exception as e:
             raise ValueError(f'Error fetching data: {e}')
 
