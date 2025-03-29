@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 
 from src.domain.entities.address import Address
-from src.domain.repositories.dto.address import CreateAddressDTO, GetAddressesDTO
 from src.domain.services.address import AddressService
 from src.infrastructure.depends import get_address_service
+from src.domain.repositories.dto.address import CreateAddressDTO, GetAddressesDTO
 
 router = APIRouter(tags=['Address'], prefix='/address')
 

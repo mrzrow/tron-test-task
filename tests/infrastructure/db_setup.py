@@ -2,6 +2,7 @@ import pytest_asyncio
 
 from src.infrastructure.database.models.base import Base
 from src.infrastructure.database.session_maker import SessionMaker
+
 from tests.settings import test_settings
 
 test_session_maker = SessionMaker(

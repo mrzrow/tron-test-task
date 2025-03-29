@@ -3,8 +3,8 @@ from sqlalchemy import select
 from src.domain.entities.address import Address
 from src.domain.repositories.address import AddressRepository
 from src.domain.repositories.dto.address import GetAddressesDTO
-from src.infrastructure.database.models.address import AddressModel
 from src.infrastructure.database.session_maker import SessionMaker
+from src.infrastructure.database.models.address import AddressModel
 
 
 class SQLAlchemyAddressRepository(AddressRepository):

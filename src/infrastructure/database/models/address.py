@@ -1,7 +1,6 @@
 from decimal import Decimal
 from datetime import datetime
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import DATETIME
 
 from src.infrastructure.database.models.base import Base
 

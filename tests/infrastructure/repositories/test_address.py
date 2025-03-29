@@ -1,11 +1,11 @@
 import pytest
-import pytest_asyncio
 
 from datetime import datetime
 from decimal import Decimal
 
 from src.domain.entities.address import Address
 from src.infrastructure.repositories.address import SQLAlchemyAddressRepository
+
 from tests.infrastructure.db_setup import *
 
 

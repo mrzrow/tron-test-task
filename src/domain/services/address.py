@@ -1,7 +1,7 @@
 from src.domain.entities.address import Address
+from src.domain.utils.address import get_address_information
 from src.domain.repositories.address import AddressRepository
 from src.domain.repositories.dto.address import CreateAddressDTO, GetAddressesDTO
-from src.domain.utils.address import get_address_information
 
 
 class AddressService:
