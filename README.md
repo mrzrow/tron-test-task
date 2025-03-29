@@ -4,7 +4,10 @@ The microservice that displays information using an address on Tron Web
 
 ### Run
 
-Configure `.env` file using template. Run `main.py`
+Configure `.env` file using template. Run `main.py`.
+
+If you have problems with python not seeing the `src` module,
+then run `python -m src.main` from the root directory.
 
 ### Endpoints
 
